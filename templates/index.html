@@ -1,13 +1,233 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="container d-flex justify-content-center align-items-center vh-100 pt-5">
-        <div class="d-flex justify-content-center">
-            <div class="d-flex flex-column" style="max-width: 400px;">
-                <img class="img-fluid" src="/static/assets/icon.jpg">
-                <h2 class="text-center mt-2">Библиотека</h2>
-                <p class="text-center">Читай. Вдохновляйся. Создавай.</p>
-            </div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отель "Премиум" - Бронирование</title>
+    <link rel="stylesheet" href="/CSS/index.css">
+   
+</head>
+<body>
+    <header class="header">
+    <div class="container">
+        <div class="logo">Отель "Премиум"</div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#rooms"><i class="fas fa-door-open"></i> Номера</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> Об отеле</a></li>
+                <li><a href="#contacts"><i class="fas fa-phone-alt"></i> Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn login-btn"><i class="fas fa-user"></i> Вход</button>
+            <button class="btn register-btn"><i class="fas fa-user-plus"></i> Регистрация</button>
+            <a href="admin-login.html" class="btn admin-btn"><i class="fas fa-lock"></i> Админ-панель</a>
         </div>
     </div>
-{% endblock %}
+</header>
+
+    <main class="main-content">
+        <!-- Герой-секция с поиском -->
+        <section class="hero">
+            <div class="container">
+                <h1>Найдите идеальный номер для вашего отдыха</h1>
+                <div class="search-form">
+                    <div class="form-group">
+                        <label for="check-in"><i class="fas fa-calendar-alt"></i> Заезд</label>
+                        <input type="date" id="check-in">
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out"><i class="fas fa-calendar-alt"></i> Выезд</label>
+                        <input type="date" id="check-out">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests"><i class="fas fa-user-friends"></i> Гости</label>
+                        <select id="guests">
+                            <option value="1">1 гость</option>
+                            <option value="2">2 гостя</option>
+                            <option value="3">3 гостя</option>
+                            <option value="4">4 гостя</option>
+                        </select>
+                    </div>
+                    <button class="btn search-btn"><i class="fas fa-search"></i> Найти номер</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция номеров -->
+        <section id="rooms" class="rooms-section">
+            <div class="container">
+                <h2><i class="fas fa-door-open"></i> Наши номера</h2>
+                <div class="room-filters">
+                    <button class="filter-btn active">Все номера</button>
+                    <button class="filter-btn">Стандарт</button>
+                    <button class="filter-btn">Люкс</button>
+                    <button class="filter-btn">Делюкс</button>
+                    <button class="filter-btn">Доступные</button>
+                </div>
+
+                <div class="rooms-grid">
+                    <!-- Номер 1 -->
+                    <div class="room-card available">
+                        <div class="room-image" style="background-image: url('/JPG/101.jpg');">
+                            <span class="room-status">Доступен</span>
+                        </div>
+                        <div class="room-details">
+                            <h3>Стандарт №101</h3>
+                            <div class="room-features">
+                                <span><i class="fas fa-user-friends"></i> 2 гостя</span>
+                                <span><i class="fas fa-expand"></i> 25 м²</span>
+                                <span><i class="fas fa-bed"></i> двуспальная</span>
+                            </div>
+                            <p class="room-description">Уютный номер с современным ремонтом</p>
+                            <div class="room-price">
+                                <span class="price">2,500 ₽</span>
+                                <span class="period">/ день</span>
+                                <button class="btn book-btn">Забронировать</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Номер 2 -->
+                    <div class="room-card booked">
+                        <div class="room-image" style="background-image: url('/JPG/102.jpg');">
+                            <span class="room-status">Забронирован</span>
+                        </div>
+                        <div class="room-details">
+                            <h3>Люкс №102</h3>
+                            <div class="room-features">
+                                <span><i class="fas fa-user-friends"></i> 2 гостя</span>
+                                <span><i class="fas fa-expand"></i> 45 м²</span>
+                                <span><i class="fas fa-bed"></i> двуспальная</span>
+                            </div>
+                            <p class="room-description">Просторный номер с гостиной зоной, мини-баром и панорамным видом на город.</p>
+                            <div class="room-price">
+                                <span class="price">5,000 ₽</span>
+                                <span class="period">/ день</span>
+                                <button class="btn book-btn" disabled>Недоступно</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Номер 3 -->
+                    <div class="room-card available">
+                        <div class="room-image" style="background-image: url('/JPG/201.jpg');">
+                            <span class="room-status">Доступен</span>
+                        </div>
+                        <div class="room-details">
+                            <h3>Делюкс №201</h3>
+                            <div class="room-features">
+                                <span><i class="fas fa-user-friends"></i> 3 гостя</span>
+                                <span><i class="fas fa-expand"></i> 60 м²</span>
+                                <span><i class="fas fa-bed"></i> двуспальная</span>
+                            </div>
+                            <p class="room-description">Роскошный номер с отдельной гостиной, джакузи и балконом с видом на море.</p>
+                            <div class="room-price">
+                                <span class="price">7,500 ₽</span>
+                                <span class="period">/ день</span>
+                                <button class="btn book-btn">Забронировать</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Номер 4 -->
+                    <div class="room-card available">
+                        <div class="room-image" style="background-image: url('/JPG/103.jpg');">
+                            <span class="room-status">Доступен</span>
+                        </div>
+                        <div class="room-details">
+                            <h3>Стандарт №103</h3>
+                            <div class="room-features">
+                                <span><i class="fas fa-user-friends"></i> 1 гость</span>
+                                <span><i class="fas fa-expand"></i> 20 м²</span>
+                                <span><i class="fas fa-bed"></i> односпальная</span>
+                            </div>
+                            <p class="room-description">Компактный и уютный номер для комфортного проживания одного гостя.</p>
+                            <div class="room-price">
+                                <span class="price">2,000 ₽</span>
+                                <span class="period">/ день</span>
+                                <button class="btn book-btn">Забронировать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Модальное окно бронирования -->
+        <div id="booking-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2><i class="fas fa-calendar-check"></i> Бронирование номера</h2>
+                <form id="booking-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modal-room">Номер</label>
+                            <input type="text" id="modal-room" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="modal-price">Стоимость за день</label>
+                            <input type="text" id="modal-price" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modal-check-in">Дата заезда</label>
+                            <input type="date" id="modal-check-in" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modal-check-out">Дата выезда</label>
+                            <input type="date" id="modal-check-out" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-guests">Количество гостей</label>
+                        <select id="modal-guests" required>
+                            <option value="1">1 гость</option>
+                            <option value="2">2 гостя</option>
+                            <option value="3">3 гостя</option>
+                            <option value="4">4 гостя</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-name">ФИО</label>
+                        <input type="text" id="modal-name" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-phone">Телефон</label>
+                        <input type="tel" id="modal-phone" placeholder="+7 (000) 000-00-00" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-email">Email</label>
+                        <input type="email" id="modal-email" placeholder="ivanov@google.com" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn submit-btn">Подтвердить бронирование</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-column">
+                <h3>Отель "Премиум"</h3>
+                <p>Челябинская область,<br>г. Златоуст, ул. им. М.Б.Шапошникова, д.1а </p>
+                <p>Телефон: 8 (3513) 672 - 656</p>
+                <p>Email: info@premium-hotel.ru</p>
+            </div>
+        <div class="copyright">
+            <p>&copy; 2023 Отель "Премиум". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="/JS/index.js"></script>
+</body>
+</html>
